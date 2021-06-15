@@ -1,11 +1,15 @@
+'use strict'
+
 const express = require('express');
 const server = express();
 const weatherData=require('./data/weather.json');
 const cors = require('cors');
-server.use(cors());
+const axios = require('axios');
+require('dotenv').config();
 
 const PORT=3012;
-//`dotenv`, and `cors`.
+server.use(cors()); //make our sever open to others
+
 server.listen(PORT,()=> { //in order to build a server and give it a port
     console.log(`lisning on ${PORT}`)
 })
@@ -38,4 +42,4 @@ return item;
 
 //localhost:3012/test.....
 server.get('*',(req,res)=> { //this will server eveything
-        res.status(404).send('Please Try Again 404 Error')
+        res.status(404).send('Please Try Again 404 Error');
